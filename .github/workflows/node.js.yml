@@ -1,0 +1,21 @@
+name: Test and build
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16
+        cache: 'yarn'
+    - run: yarn --frozen-lockfile
+    - run: yarn build
+    - run: yarn lint
+    - run: yarn test
