@@ -83,10 +83,7 @@
     "react-dom": "18.0.0"
   },
   "lint-staged": {
-    "**/*.{ts,tsx}": [
-      "yarn prettier --write"
-    ],
-    "**/*.{md,js,json}": [
+    "**/*.{ts,tsx,md,js,json}": [
       "yarn prettier --write"
     ]
   },
