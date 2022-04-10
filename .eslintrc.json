@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json.schemastore.org/eslintrc.json",
+  "env": { "browser": true, "es2021": true },
+  "plugins": ["@typeofweb/eslint-plugin"],
+  "extends": [
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:@typeofweb/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": { "jsx": true },
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "project": "tsconfig.json"
+  },
+  "settings": {
+    "react": {
+      "version": "18"
+    }
+  },
+  "rules": {
+    "react-hooks/exhaustive-deps": ["error"],
+    "react/display-name": "error"
+  },
+  "ignorePatterns": ["dist", "rollup.config.js"]
+}
