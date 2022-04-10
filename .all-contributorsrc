@@ -9,17 +9,7 @@
   "imageSize": 70,
   "commit": true,
   "commitConvention": "angular",
-  "contributors": [
-    {
-      "login": "zaiste",
-      "name": "Jakub Neander",
-      "avatar_url": "https://avatars.githubusercontent.com/u/200613?v=4",
-      "profile": "https://zaiste.net/",
-      "contributions": [
-        "maintenance"
-      ]
-    }
-  ],
+  "contributors": [],
   "contributorsPerLine": 3,
   "skipCi": true
 }

@@ -20,6 +20,10 @@
     "prepublishOnly": "yarn build",
     "prepare": "husky install"
   },
+  "np": {
+    "branch": "main",
+    "releaseDraft": true
+  },
   "repository": {
     "type": "git",
     "url": "git@github.com:HyperFunctor/next-paginate.git"
@@ -46,6 +50,7 @@
     "@types/node": "16",
     "@types/react": "18.0.1",
     "@types/react-dom": "18.0.0",
+    "all-contributors-cli": "6.20.0",
     "eslint": "8.13.0",
     "eslint-plugin-react": "7.29.4",
     "eslint-plugin-react-hooks": "4.4.0",
