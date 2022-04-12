@@ -9,7 +9,7 @@ import license from "rollup-plugin-license";
 
 import pkg from "./package.json";
 
-const shouldCompress = process.env.COMPRESS_BUNDLES ? true : false;
+const shouldPrettify = process.env.PRETTIFY_BUNDLES ? true : false;
 
 const rollupConfig = [
   {
@@ -21,14 +21,14 @@ const rollupConfig = [
         entryFileNames: pkg.exports.import.replace(/^\.\//, ""),
         sourcemap: true,
         plugins: [
-          shouldCompress
-            ? terser({
+          shouldPrettify
+            ? prettier({
+                parser: "typescript",
+              })
+            : terser({
                 compress: true,
                 mangle: true,
                 ecma: 2019,
-              })
-            : prettier({
-                parser: "typescript",
               }),
         ],
       },
@@ -38,14 +38,14 @@ const rollupConfig = [
         entryFileNames: pkg.exports.require.replace(/^\.\//, ""),
         sourcemap: true,
         plugins: [
-          shouldCompress
-            ? terser({
+          shouldPrettify
+            ? prettier({
+                parser: "typescript",
+              })
+            : terser({
                 compress: true,
                 mangle: true,
                 ecma: 2019,
-              })
-            : prettier({
-                parser: "typescript",
               }),
         ],
       },
