@@ -9,7 +9,7 @@ import license from "rollup-plugin-license";
 
 import pkg from "./package.json";
 
-const shouldCompress = process.env.COMPRESS_BUNDLES ? true : false;
+const shouldPrettify = process.env.PRETTIFY_BUNDLES ? true : false;
 
 const rollupConfig = [
   {
@@ -19,16 +19,16 @@ const rollupConfig = [
         format: "es",
         dir: "./",
         entryFileNames: pkg.exports.import.replace(/^\.\//, ""),
-        sourcemap: true,
+        sourcemap: !shouldPrettify,
         plugins: [
-          shouldCompress
-            ? terser({
+          shouldPrettify
+            ? prettier({
+                parser: "typescript",
+              })
+            : terser({
                 compress: true,
                 mangle: true,
-                ecma: 2019,
-              })
-            : prettier({
-                parser: "typescript",
+                ecma: 2020,
               }),
         ],
       },
@@ -36,38 +36,21 @@ const rollupConfig = [
         format: "cjs",
         dir: "./",
         entryFileNames: pkg.exports.require.replace(/^\.\//, ""),
-        sourcemap: true,
+        sourcemap: !shouldPrettify,
         plugins: [
-          shouldCompress
-            ? terser({
+          shouldPrettify
+            ? prettier({
+                parser: "typescript",
+              })
+            : terser({
                 compress: true,
                 mangle: true,
-                ecma: 2019,
-              })
-            : prettier({
-                parser: "typescript",
+                ecma: 2020,
               }),
         ],
       },
-      {
-        name: "NextPaginage",
-        entryFileNames: pkg.exports.browser.replace(/^\.\//, ""),
-        sourcemap: true,
-        format: "umd",
-        dir: "./",
-        globals: {
-          react: "React",
-        },
-        plugins: [
-          terser({
-            compress: true,
-            mangle: true,
-            ecma: 2019,
-          }),
-        ],
-      },
     ],
-    external: ["react"],
+    external: ["react", "next", "next/link", "next/router"],
     plugins: [
       resolve(),
       commonjs({
