@@ -48,13 +48,11 @@ export const PaginationDots = ({ condition, path }: TheDotsProps) => {
       />
     );
   }
-  {
-    return condition ? (
-      <div onMouseEnter={() => setShowInput(true)}>
-        <span>.</span>
-        <span>.</span>
-        <span>.</span>
-      </div>
-    ) : null;
-  }
+  return condition ? (
+    <div onMouseEnter={() => setShowInput(true)}>
+      <span>.</span>
+      <span>.</span>
+      <span>.</span>
+    </div>
+  ) : null;
 };
