@@ -13,9 +13,13 @@ function calculateNumberOfPages(currentPage: number, pagesTotal: number) {
       return 1;
     case pagesTotal:
       return 1;
-    case 2 || 3:
+    case 2:
       return currentPage;
-    case pagesTotal - 1 || pagesTotal - 2:
+    case 3:
+      return currentPage;
+    case pagesTotal - 1:
+      return pagesTotal - currentPage + 1;
+    case pagesTotal - 2:
       return pagesTotal - currentPage + 1;
     default:
       return 3;
