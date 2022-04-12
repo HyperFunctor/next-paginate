@@ -16,7 +16,7 @@
     "build:watch": "rollup --config --watch",
     "prepublishOnly": "yarn build",
     "prepare": "husky install",
-    "lint": "eslint --fix .",
+    "lint": "eslint .",
     "test": "jest"
   },
   "np": {
