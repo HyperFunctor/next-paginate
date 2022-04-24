@@ -1,11 +1,11 @@
-name: Lint Commit Messages
-on: [pull_request]
+name: Lint Commit Message
+on:
+  pull_request:
+    types: ["opened", "edited", "reopened", "synchronize"]
 
 jobs:
-  commitlint:
+  lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - uses: wagoid/commitlint-github-action@v4
+      - uses: actions/checkout@v1
+      - uses: JulienKode/pull-request-name-linter-action@v0.5.0
