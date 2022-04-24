@@ -1,14 +1,15 @@
-import React from "react";
 import Link from "next/link";
-import { PaginationItem } from "./PaginationItem";
+import React from "react";
+
 import { PaginationArray } from "./PaginationArray";
 import { PaginationDots } from "./PaginationDots";
+import { PaginationItem } from "./PaginationItem";
 
 interface Props {
-  currentPage: number;
-  currentPageSetter: React.Dispatch<React.SetStateAction<number>>;
-  pagesTotal: number;
-  path: string;
+  readonly currentPage: number;
+  readonly currentPageSetter: React.Dispatch<React.SetStateAction<number>>;
+  readonly pagesTotal: number;
+  readonly path: string;
 }
 
 export const DottedPagination = ({
@@ -33,6 +34,7 @@ export const DottedPagination = ({
         currentPage={currentPage}
         currentPageSetter={currentPageSetter}
         pagesTotal={pagesTotal}
+        path={path}
       />
       <PaginationDots condition={currentPage < pagesTotal - 2} path={path} />
       <PaginationItem

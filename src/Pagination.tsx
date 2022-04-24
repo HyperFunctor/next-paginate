@@ -1,12 +1,13 @@
-import React from "react";
 import Link from "next/link";
+import React from "react";
+
 import { PaginationItem } from "./PaginationItem";
 
 interface Props {
-  currentPage: number;
-  currentPageSetter: React.Dispatch<React.SetStateAction<number>>;
-  pagesTotal: number;
-  path: string;
+  readonly currentPage: number;
+  readonly currentPageSetter: React.Dispatch<React.SetStateAction<number>>;
+  readonly pagesTotal: number;
+  readonly path: string;
 }
 
 export const Pagination = ({
@@ -23,10 +24,11 @@ export const Pagination = ({
       <ul>
         {Array.from({ length: pagesTotal }, (_, i) => (
           <PaginationItem
+            key={i}
             currentPage={currentPage}
             pageNumber={i + 1}
             currentPageSetter={currentPageSetter}
-            key={i}
+            path={path}
           />
         ))}
       </ul>

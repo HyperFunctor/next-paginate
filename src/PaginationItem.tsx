@@ -1,18 +1,18 @@
-import React from "react";
 import Link from "next/link";
+import React from "react";
 
 interface PaginationItemProps {
-  pageNumber: number;
-  currentPage: number;
-  currentPageSetter: React.Dispatch<React.SetStateAction<number>>;
-  path: string
+  readonly pageNumber: number;
+  readonly currentPage: number;
+  readonly currentPageSetter: React.Dispatch<React.SetStateAction<number>>;
+  readonly path: string;
 }
 
 export const PaginationItem = ({
   pageNumber,
   currentPage,
   currentPageSetter,
-  path
+  path,
 }: PaginationItemProps) => (
   <li>
     <Link href={`/${path}/${pageNumber}`}>

@@ -2,8 +2,8 @@ import { useRouter } from "next/router";
 import React, { useEffect, useRef, useState } from "react";
 
 interface TheDotsProps {
-  condition: boolean;
-  path: string;
+  readonly condition: boolean;
+  readonly path: string;
 }
 
 export const PaginationDots = ({ condition, path }: TheDotsProps) => {
@@ -17,19 +17,12 @@ export const PaginationDots = ({ condition, path }: TheDotsProps) => {
     setInputValue(value);
   };
 
-  useEffect(() => {
-    const handleEnterKey = (e: KeyboardEvent) => {
-      if (inputValue && e.key === "Enter") {
-        router.push(`/${path}/${inputValue}`);
-        setInputValue("");
-      }
-    };
-    document.addEventListener("keyup", handleEnterKey);
-    () => {
-      document.removeEventListener("keyup", handleEnterKey);
-    };
-  }, [inputValue, router, path]);
-
+  const handleEnterKey = async (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (inputValue && e.key === "Enter") {
+      await router.push(`/${path}/${inputValue}`);
+      setInputValue("");
+    }
+  };
   useEffect(() => {
     if (inputRef.current) {
       inputRef.current.focus();
@@ -41,6 +34,7 @@ export const PaginationDots = ({ condition, path }: TheDotsProps) => {
       <input
         ref={inputRef}
         onMouseOut={() => setShowInput(false)}
+        onKeyUp={(e) => handleEnterKey(e)}
         placeholder="nr"
         type="text"
         value={inputValue}
