@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
 import React from "react";
 
-import { Pagination } from "./index";
+import { Pagination } from "./Pagination";
 
 describe("lol", () => {
   it("should work", () => {
@@ -9,6 +9,13 @@ describe("lol", () => {
   });
 
   it("should render", () => {
-    render(<Pagination />);
+    render(
+      <Pagination
+        currentPage={7}
+        currentPageSetter={() => 7}
+        pagesTotal={700}
+        path=""
+      />
+    );
   });
 });
